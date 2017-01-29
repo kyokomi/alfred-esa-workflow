@@ -1,0 +1,9 @@
+{
+  "export_file": "esa.alfredworkflow",
+  "bundle_id": "com.kyokomi.alfred-esa-workflow",
+  "readme": "README.md",
+  "resources": [
+    "icon.png",
+    "alfred-esa-workflow"
+  ]
+}

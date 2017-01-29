@@ -1,0 +1,49 @@
+build:
+  box: golang
+  steps:
+    - script:
+        name: go dep
+        code: |
+          go get -u github.com/golang/dep/...
+          dep ensure -update
+    - setup-go-workspace
+    - golint:
+        exclude: "(vendor)"
+    - script:
+        name: go test
+        code: |
+          go test -v -cover $(go list ./... | grep -v /vendor/)
+    - script:
+        name: go vet
+        code: |
+          go vet $(go list ./... | grep -v /vendor/)
+    - script:
+        name: go build
+        code: |
+          go build -o dist
+
+deploy:
+  box: golang
+  steps:
+    - script:
+        name: go dep
+        code: |
+          go get -u github.com/golang/dep/...
+          dep ensure -update
+    - setup-go-workspace
+    - script:
+        name: go build
+        code: |
+          go build -o dist
+    - pip-install
+    - script:
+        name: alfred-workflow-packager
+        code: |
+          pip install alfred-workflow-packager
+          awp --version v0.0.1
+          awp --export
+    - tcnksm/ghr:
+        token: $GITHUB_TOKEN
+        input: esa.alfredworkflow
+        version: v0.0.1
+        replace: true

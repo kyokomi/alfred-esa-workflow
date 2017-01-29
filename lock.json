@@ -1,0 +1,45 @@
+{
+    "memo": "d1dd95be84220c8cb5c232c25f6709567bb27c64aaaa6fb3c12efb8ddb261918",
+    "projects": [
+        {
+            "name": "github.com/mitchellh/go-homedir",
+            "branch": "master",
+            "revision": "b8bc1bf767474819792c23f32d8286a45736f1c6",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pascalw/go-alfred",
+            "branch": "master",
+            "revision": "16aeb807166cb79fe1bcf72995e14cbe882b3a9b",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pkg/errors",
+            "version": "v0.8.0",
+            "revision": "645ef00459ed84a119197bfb8d8205042c6df63d",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/upamune/go-esa",
+            "branch": "master",
+            "revision": "5c8b430b0e94e1cfff251624f7ae979b7a411f73",
+            "packages": [
+                "esa"
+            ]
+        },
+        {
+            "name": "github.com/urfave/cli",
+            "version": "v1.19.1",
+            "revision": "0bdeddeeb0f650497d603c4ad7b20cfe685682f6",
+            "packages": [
+                "."
+            ]
+        }
+    ]
+}
