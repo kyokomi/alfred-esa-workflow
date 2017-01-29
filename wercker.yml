@@ -1,12 +1,12 @@
 build:
   box: golang
   steps:
+    - setup-go-workspace
     - script:
         name: go dep
         code: |
           go get -u github.com/golang/dep/...
           dep ensure -update
-    - setup-go-workspace
     - golint:
         exclude: "(vendor)"
     - script:
@@ -25,12 +25,12 @@ build:
 deploy:
   box: golang
   steps:
+    - setup-go-workspace
     - script:
         name: go dep
         code: |
           go get -u github.com/golang/dep/...
           dep ensure -update
-    - setup-go-workspace
     - script:
         name: go build
         code: |
