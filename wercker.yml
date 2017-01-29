@@ -22,19 +22,19 @@ build:
         code: |
           go build
 
-deploy:
-  box: python
-  steps:
-    - pip-install:
-        requirements_file: ""
-        packages_list:     "alfred-workflow-packager"
-    - script:
-        name: alfred-workflow-packager export
-        code: |
-          awp --version v0.0.1
-          awp --export
-    - tcnksm/ghr:
-        token:   $GITHUB_TOKEN
-        input:   esa.alfredworkflow
-        version: v0.0.1
-        replace: true
+#deploy:
+#  box: python
+#  steps:
+#    - pip-install:
+#        requirements_file: ""
+#        packages_list:     "alfred-workflow-packager"
+#    - script:
+#        name: alfred-workflow-packager export
+#        code: |
+#          awp --version v0.0.1
+#          awp --export
+#    - tcnksm/ghr:
+#        token:   $GITHUB_TOKEN
+#        input:   esa.alfredworkflow
+#        version: v0.0.1
+#        replace: true
