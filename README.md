@@ -4,7 +4,7 @@ alfred-esa-workflow
 ![DEMO image](screenshot/alfred-esa-workflow.png)
 
 ## Install
-Download [latest version of Alfred esa Workflow](releases/latest) and double-click esa.alfredworkflow to install it.
+Download [latest version of Alfred esa Workflow](https://github.com/kyokomi/alfred-esa-workflow/releases/latest) and double-click esa.alfredworkflow to install it.
 
 ## Usage
 ### Search Posts
