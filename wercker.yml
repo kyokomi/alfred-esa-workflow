@@ -23,7 +23,7 @@ build:
           go build
 
 deploy:
-  box: wercker/python
+  box: python
   steps:
     - pip-install:
         packages_list: "alfred-workflow-packager"
