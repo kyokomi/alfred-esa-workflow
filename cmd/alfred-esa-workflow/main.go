@@ -6,23 +6,20 @@ import (
 	"github.com/urfave/cli"
 )
 
-const (
-	bundleID = "com.kyokomi.alfred-esa-workflow"
-	version  = "0.0.2"
-)
-
 func main() {
+	w := NewWorkflow()
+
 	app := cli.NewApp()
-	app.Name = "alfred-esa-workflow"
-	app.Version = version
+	app.Name = os.Getenv("alfred_workflow_bundleid")
+	app.Version = os.Getenv("alfred_version")
 	app.Commands = []cli.Command{
 		{
 			Name:   "setup",
-			Action: cmdSetup,
+			Action: w.Setup.Command,
 		},
 		{
 			Name:   "search",
-			Action: cmdSearch,
+			Action: w.Search.Command,
 		},
 	}
 	app.Run(os.Args)

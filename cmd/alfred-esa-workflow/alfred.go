@@ -1,10 +1,18 @@
 package main
 
 import (
+	"fmt"
+	"os"
+
 	alfred "github.com/pascalw/go-alfred"
 )
 
-func alfredPrintError(err error) {
+// Alfred alfred printer
+type Alfred struct {
+}
+
+// PrintError filter script print error
+func (a Alfred) PrintError(err error) {
 	response := alfred.NewResponse()
 	response.AddItem(&alfred.AlfredResponseItem{
 		Valid: true,
@@ -14,7 +22,8 @@ func alfredPrintError(err error) {
 	response.Print()
 }
 
-func alfredPrintItems(items []*alfred.AlfredResponseItem) {
+// PrintItems filter script print items
+func (a Alfred) PrintItems(items []*alfred.AlfredResponseItem) {
 	response := alfred.NewResponse()
 	for _, item := range items {
 		response.AddItem(item)
@@ -22,7 +31,8 @@ func alfredPrintItems(items []*alfred.AlfredResponseItem) {
 	response.Print()
 }
 
-func alfredPrintMessage(message string) {
+// PrintMessage filter script print one message
+func (a Alfred) PrintMessage(message string) {
 	response := alfred.NewResponse()
 	response.AddItem(&alfred.AlfredResponseItem{
 		Valid: true,
@@ -30,4 +40,14 @@ func alfredPrintMessage(message string) {
 		Title: message,
 	})
 	response.Print()
+}
+
+// Message normal response message
+func (a Alfred) Message(message string) {
+	fmt.Fprint(os.Stdout, message)
+}
+
+// Error normal response error message
+func (a Alfred) Error(err error) {
+	fmt.Fprint(os.Stdout, err)
 }

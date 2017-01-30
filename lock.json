@@ -1,14 +1,6 @@
 {
-    "memo": "d1dd95be84220c8cb5c232c25f6709567bb27c64aaaa6fb3c12efb8ddb261918",
+    "memo": "d84cb900f9ac3276cfcd82dba4b0c8bd33e79f06bd792299fb1bd3a36c39b2e8",
     "projects": [
-        {
-            "name": "github.com/mitchellh/go-homedir",
-            "branch": "master",
-            "revision": "b8bc1bf767474819792c23f32d8286a45736f1c6",
-            "packages": [
-                "."
-            ]
-        },
         {
             "name": "github.com/pascalw/go-alfred",
             "branch": "master",

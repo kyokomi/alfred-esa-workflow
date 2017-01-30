@@ -11,31 +11,33 @@ import (
 	"github.com/urfave/cli"
 )
 
-func cmdSearch(c *cli.Context) {
-	w, err := newEsaWorkflowFromConfig()
-	if err != nil {
-		alfredPrintError(errors.New("don't setup config"))
-		os.Exit(1)
-	}
-
-	items, err := w.searchPosts(c.Args())
-	if err != nil {
-		alfredPrintError(err)
-		os.Exit(1)
-	}
-
-	alfredPrintItems(items)
+// SearchService posts search service
+type SearchService struct {
+	*Workflow
 }
 
-func (w *esaWorkflow) searchPosts(args []string) ([]*alfred.AlfredResponseItem, error) {
+// Command cli command
+func (s *SearchService) Command(c *cli.Context) {
+	if !s.Config.IsValid() {
+		s.Alfred.PrintError(errors.New("don't setup config"))
+		os.Exit(1)
+	}
+
+	if err := s.run(c.Args()); err != nil {
+		s.Alfred.PrintError(err)
+		os.Exit(1)
+	}
+}
+
+func (s *SearchService) run(args []string) error {
 	query := url.Values{}
 	for _, arg := range args {
 		query.Add("", arg)
 	}
 
-	resp, err := w.client.Post.GetPosts(w.teamName, query)
+	resp, err := s.Client.Post.GetPosts(s.Config.TeamName, query)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	items := make([]*alfred.AlfredResponseItem, len(resp.Posts))
@@ -48,5 +50,7 @@ func (w *esaWorkflow) searchPosts(args []string) ([]*alfred.AlfredResponseItem, 
 			Subtitle: fmt.Sprintf("%s %s", post.Category, post.CreatedAt),
 		}
 	}
-	return items, nil
+
+	s.Alfred.PrintItems(items)
+	return nil
 }
