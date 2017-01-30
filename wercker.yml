@@ -18,9 +18,13 @@ build:
         code: |
           go vet $(go list ./... | grep -v /vendor/)
     - script:
-        name: go build
+        name: install mitchellh/gox
         code: |
-          go build
+          go get -u -v github.com/mitchellh/gox
+    - script:
+        name: gox
+        code: |
+          gox -osarch="darwin/amd64" -output="alfred-esa-workflow"
 
 deploy:
   box: golang
@@ -32,9 +36,13 @@ deploy:
           go get -u github.com/golang/dep/...
           dep ensure -update
     - script:
-        name: go build
+        name: install mitchellh/gox
         code: |
-          go build
+          go get -u -v github.com/mitchellh/gox
+    - script:
+        name: gox
+        code: |
+          gox -osarch="darwin/amd64" -output="alfred-esa-workflow"
     - script:
         name: install alfreder
         code: |
