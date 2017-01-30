@@ -1,6 +1,14 @@
 {
-    "memo": "d1dd95be84220c8cb5c232c25f6709567bb27c64aaaa6fb3c12efb8ddb261918",
+    "memo": "3618246dd2fbb40813bbdcf683cba05be21d45f71d8a01e5decaf6fcea992625",
     "projects": [
+        {
+            "name": "github.com/jhoonb/archivex",
+            "branch": "master",
+            "revision": "b669bdadd30ace382d6e082dfcc8e33b926db1a1",
+            "packages": [
+                "."
+            ]
+        },
         {
             "name": "github.com/mitchellh/go-homedir",
             "branch": "master",
@@ -20,7 +28,7 @@
         {
             "name": "github.com/pkg/errors",
             "version": "v0.8.0",
-            "revision": "645ef00459ed84a119197bfb8d8205042c6df63d",
+            "revision": "3866ebc348c54054262feae422da428fe6cf147d",
             "packages": [
                 "."
             ]

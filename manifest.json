@@ -1,5 +1,8 @@
 {
     "dependencies": {
+        "github.com/jhoonb/archivex": {
+            "branch": "master"
+        },
         "github.com/upamune/go-esa": {
             "branch": "master"
         }

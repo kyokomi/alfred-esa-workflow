@@ -22,21 +22,5 @@ Get Personal Token which have a scope for read and put it on:
 esa setup <accessToken> <teamName>
 ```
 
-## Development install
-
-### Install tools
-- [golang/dep](https://github.com/golang/dep)
-- [caleb531/alfred-workflow-packager](https://github.com/caleb531/alfred-workflow-packager)
-
-
-### build and export
-```shell
-$ go get github.com/kyokomi/alfred-esa-workflow
-$ cd $GOPATH/github.com/uetchy/alfred-esa-workflow
-$ dep ensure
-$ go build
-$ awp --export
-```
-
 ## License
 [MIT](LICENSE.md)

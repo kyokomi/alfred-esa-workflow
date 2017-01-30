@@ -22,19 +22,29 @@ build:
         code: |
           go build
 
-#deploy:
-#  box: python
-#  steps:
-#    - pip-install:
-#        requirements_file: ""
-#        packages_list:     "alfred-workflow-packager"
-#    - script:
-#        name: alfred-workflow-packager export
-#        code: |
-#          awp --version v0.0.1
-#          awp --export
-#    - tcnksm/ghr:
-#        token:   $GITHUB_TOKEN
-#        input:   esa.alfredworkflow
-#        version: v0.0.1
-#        replace: true
+deploy:
+  box: golang
+  steps:
+    - setup-go-workspace
+    - script:
+        name: go dep
+        code: |
+          go get -u github.com/golang/dep/...
+          dep ensure -update
+    - script:
+        name: go build
+        code: |
+          go build
+    - script:
+        name: install alfreder
+        code: |
+          go get github.com/kyokomi/alfreder
+    - script:
+        name: packaging alfredworkflow
+        code: |
+          alfreder
+    - tcnksm/ghr:
+        token:   $GITHUB_TOKEN
+        input:   esa.alfredworkflow
+        version: v0.0.1
+        replace: true
