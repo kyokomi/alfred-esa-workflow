@@ -43,9 +43,9 @@ func (w *esaWorkflow) searchPosts(args []string) ([]*alfred.AlfredResponseItem, 
 		items[i] = &alfred.AlfredResponseItem{
 			Valid:    true,
 			Uid:      strconv.Itoa(post.Number),
-			Title:    post.FullName,
+			Title:    post.Name,
 			Arg:      post.URL,
-			Subtitle: fmt.Sprintf("%s %s", post.BodyMd, post.CreatedAt),
+			Subtitle: fmt.Sprintf("%s %s", post.Category, post.CreatedAt),
 		}
 	}
 	return items, nil
