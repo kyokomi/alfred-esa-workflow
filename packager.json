@@ -1,7 +1,13 @@
 {
-  "export_file": "esa.alfredworkflow",
-  "bundle_id": "com.kyokomi.alfred-esa-workflow",
+  "exportFile": "esa.alfredworkflow",
   "readme": "README.md",
+  "replaceInfo": {
+    "bundleid": "com.kyokomi.alfred-esa-workflow",
+    "createdby": "kyokomi",
+    "webaddress": "https://github.com/kyokomi/alfred-esa-workflow",
+    "description": "workflow of esa",
+    "name": "esa"
+  },
   "resources": [
     "icon.png",
     "alfred-esa-workflow"
