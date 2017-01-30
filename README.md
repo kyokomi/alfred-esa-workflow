@@ -1,6 +1,8 @@
 alfred-esa-workflow
 ======================
 
+[![wercker status](https://app.wercker.com/status/17322191aebafcf8e38de0545333982e/m/master "wercker status")](https://app.wercker.com/project/byKey/17322191aebafcf8e38de0545333982e)
+
 ![DEMO image](screenshot/alfred-esa-workflow.png)
 
 ## Install
