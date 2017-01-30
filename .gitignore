@@ -74,6 +74,6 @@ _testmain.go
 # external packages folder
 vendor/
 
-alfred-esa-workflow
+resources/alfred-esa-workflow
 esa.alfredworkflow
 
