@@ -6,7 +6,7 @@
     "createdby": "kyokomi",
     "webaddress": "https://github.com/kyokomi/alfred-esa-workflow",
     "description": "workflow of esa",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "name": "dev-esa"
   },
   "resources": [

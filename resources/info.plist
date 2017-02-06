@@ -8,11 +8,47 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>426F2346-AE7A-4D4A-8BF3-F749CB28831C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9634284F-AE1E-48AA-AD8D-EB5F21428FA6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>949B7B32-A337-4E92-83A3-25E05146A988</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>FB891E60-1C9B-4CCD-8467-2B43D1C68E07</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9634284F-AE1E-48AA-AD8D-EB5F21428FA6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3C464A16-2864-4FF1-8659-089FC71999A6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>AC5D6BAB-E95D-4464-B570-723EE2089459</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -61,27 +97,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>esa setup</string>
-				<key>subtext</key>
-				<string>esa setup &lt;personal accessToken&gt; &lt;teamName&gt;</string>
-				<key>text</key>
-				<string>esa setup</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>949B7B32-A337-4E92-83A3-25E05146A988</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -101,6 +116,27 @@
 			<string>FB891E60-1C9B-4CCD-8467-2B43D1C68E07</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>esa setup</string>
+				<key>subtext</key>
+				<string>esa setup &lt;personal accessToken&gt; &lt;teamName&gt;</string>
+				<key>text</key>
+				<string>esa setup</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>949B7B32-A337-4E92-83A3-25E05146A988</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -126,19 +162,21 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
 				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
+				<key>title</key>
+				<string>esa today copied</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
+			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>6BD75015-B81D-42B6-AC42-096CF12D1394</string>
+			<string>3C464A16-2864-4FF1-8659-089FC71999A6</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -185,50 +223,183 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>6BD75015-B81D-42B6-AC42-096CF12D1394</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>./alfred-esa-workflow today "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9634284F-AE1E-48AA-AD8D-EB5F21428FA6</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>esa today</string>
+				<key>subtext</key>
+				<string>esa today &lt;username&gt;</string>
+				<key>text</key>
+				<string>esa today</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>426F2346-AE7A-4D4A-8BF3-F749CB28831C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>AC5D6BAB-E95D-4464-B570-723EE2089459</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
-	<string>v0.0.1
+	<string>alfred-esa-workflow
+======================
+
+![DEMO image](screenshot/alfred-esa-workflow.png)
+
+## Install
+Download [latest version of Alfred esa Workflow](https://github.com/kyokomi/alfred-esa-workflow/releases/latest) and double-click esa.alfredworkflow to install it.
+
+## Usage
+### Search Posts
+
+```
+esa search &lt;query&gt;
+```
+
+### Setup personal token and team name
+Get Personal Token which have a scope for read and put it on:
+
+`https://&lt;your team name&gt;.esa.io/user/applications`
+
+```shell
+esa setup &lt;accessToken&gt; &lt;teamName&gt;
+```
+
+## License
+[MIT](LICENSE.md)
 </string>
 	<key>uidata</key>
 	<dict>
 		<key>07DECCC0-7992-4588-B3C4-0DFEF70BB54F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>530</integer>
+			<integer>510</integer>
 			<key>ypos</key>
-			<integer>70</integer>
+			<integer>60</integer>
+		</dict>
+		<key>3C464A16-2864-4FF1-8659-089FC71999A6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>190</integer>
+		</dict>
+		<key>426F2346-AE7A-4D4A-8BF3-F749CB28831C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>50</integer>
+			<key>ypos</key>
+			<integer>320</integer>
 		</dict>
 		<key>6BD75015-B81D-42B6-AC42-096CF12D1394</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>290</integer>
 			<key>ypos</key>
-			<integer>200</integer>
+			<integer>190</integer>
 		</dict>
 		<key>949B7B32-A337-4E92-83A3-25E05146A988</key>
 		<dict>
 			<key>xpos</key>
-			<integer>60</integer>
+			<integer>50</integer>
 			<key>ypos</key>
 			<integer>60</integer>
+		</dict>
+		<key>9634284F-AE1E-48AA-AD8D-EB5F21428FA6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>290</integer>
+			<key>ypos</key>
+			<integer>320</integer>
+		</dict>
+		<key>AC5D6BAB-E95D-4464-B570-723EE2089459</key>
+		<dict>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>320</integer>
 		</dict>
 		<key>F8648C81-A535-4528-9160-299196CB8729</key>
 		<dict>
 			<key>xpos</key>
-			<integer>60</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>200</integer>
+			<integer>190</integer>
 		</dict>
 		<key>FB891E60-1C9B-4CCD-8467-2B43D1C68E07</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>290</integer>
 			<key>ypos</key>
 			<integer>60</integer>
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>0.0.1</string>
+	<string>0.0.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/kyokomi/alfred-esa-workflow</string>
 </dict>
