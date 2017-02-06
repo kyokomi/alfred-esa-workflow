@@ -24,6 +24,7 @@ type Workflow struct {
 	// Service
 	Setup  *SetupService
 	Search *SearchService
+	Today  *TodayService
 }
 
 func (w Workflow) buildConfigFilePath() string {
@@ -69,5 +70,6 @@ func NewWorkflow() *Workflow {
 	w.Alfred = &Alfred{}
 	w.Setup = &SetupService{Workflow: w}
 	w.Search = &SearchService{Workflow: w}
+	w.Today = &TodayService{Workflow: w}
 	return w
 }

@@ -10,8 +10,8 @@ func main() {
 	w := NewWorkflow()
 
 	app := cli.NewApp()
-	app.Name = os.Getenv("alfred_workflow_bundleid")
-	app.Version = os.Getenv("alfred_version")
+	app.Name = w.AppName
+	app.Version = w.Version
 	app.Commands = []cli.Command{
 		{
 			Name:   "setup",
@@ -20,6 +20,10 @@ func main() {
 		{
 			Name:   "search",
 			Action: w.Search.Command,
+		},
+		{
+			Name:   "today",
+			Action: w.Today.Command,
 		},
 	}
 	app.Run(os.Args)
