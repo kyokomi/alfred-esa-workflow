@@ -55,4 +55,4 @@ deploy:
         token:   $GITHUB_TOKEN
         input:   esa.alfredworkflow
         version: v0.0.4
-        replace: true
+        replace: false
