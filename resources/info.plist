@@ -273,7 +273,7 @@
 				<key>keyword</key>
 				<string>esa today</string>
 				<key>subtext</key>
-				<string>esa today &lt;username&gt;</string>
+				<string>esa today &lt;username&gt; (&lt;yyyy-MM-dd | number of hours ago&gt;)</string>
 				<key>text</key>
 				<string>esa today</string>
 				<key>withspace</key>

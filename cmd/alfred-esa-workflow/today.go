@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/url"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -32,11 +33,17 @@ func (s *TodayService) Command(c *cli.Context) {
 func (s *TodayService) run(args []string) error {
 	query := url.Values{}
 	if len(args) < 1 {
-		return fmt.Errorf("args error: <username> != %d", len(args))
+		return createArgsError(args)
 	}
 	username := args[0]
+	today := nowTimeTodayDate().Format("2006-01-02")
+	if len(args) > 1 {
+		if inputDate := argTimeTodayDate(args[1]); !inputDate.IsZero() {
+			today = inputDate.Format("2006-01-02")
+		}
+	}
 
-	query.Add("updated", fmt.Sprintf(">=%s", time.Now().Add(-24*time.Hour).Format("2006-01-02")))
+	query.Add("updated", fmt.Sprintf(">=%s", today))
 	query.Add("user", username)
 
 	resp, err := s.Client.Post.GetPosts(s.Config.TeamName, query)
@@ -60,4 +67,25 @@ func (s *TodayService) run(args []string) error {
 
 	fmt.Println("ERROR: there are no posts of today")
 	return nil
+}
+
+func nowTimeTodayDate() time.Time {
+	nowTime := time.Now()
+	return time.Date(nowTime.Year(), nowTime.Month(), nowTime.Day(), 0, 0, 0, 0, time.Local)
+}
+
+func createArgsError(args []string) error {
+	return fmt.Errorf("args error: <username> <yyyy-MM-dd | number of hours ago> != %s", args)
+}
+
+func argTimeTodayDate(arg string) time.Time {
+	inputHoursAgo, err := strconv.Atoi(arg)
+	if err == nil {
+		return time.Now().Add(time.Hour * time.Duration(inputHoursAgo*-1))
+	}
+	inputDate, err := time.Parse("2006-01-02", arg)
+	if err == nil {
+		return inputDate
+	}
+	return time.Time{}
 }
