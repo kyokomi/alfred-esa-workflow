@@ -6,7 +6,7 @@ build:
         name: go dep
         code: |
           go get -u github.com/golang/dep/...
-          dep ensure -update
+          dep ensure
     - golint:
         exclude: "(vendor)"
     - script:
@@ -34,7 +34,7 @@ deploy:
         name: go dep
         code: |
           go get -u github.com/golang/dep/...
-          dep ensure -update
+          dep ensure
     - script:
         name: install mitchellh/gox
         code: |

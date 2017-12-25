@@ -1,7 +1,0 @@
-{
-    "dependencies": {
-        "github.com/upamune/go-esa": {
-            "branch": "master"
-        }
-    }
-}
