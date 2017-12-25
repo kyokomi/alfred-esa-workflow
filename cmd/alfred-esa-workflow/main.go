@@ -25,6 +25,10 @@ func main() {
 			Name:   "today",
 			Action: w.Today.Command,
 		},
+		{
+			Name:   "regexp",
+			Action: w.PostRegexp.Command,
+		},
 	}
 	app.Run(os.Args)
 }

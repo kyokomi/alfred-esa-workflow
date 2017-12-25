@@ -22,9 +22,10 @@ type Workflow struct {
 	Client   *esa.Client
 	Alfred   *Alfred
 	// Service
-	Setup  *SetupService
-	Search *SearchService
-	Today  *TodayService
+	Setup      *SetupService
+	Search     *SearchService
+	Today      *TodayService
+	PostRegexp *PostRegexpService
 }
 
 func (w Workflow) buildConfigFilePath() string {
@@ -71,5 +72,6 @@ func NewWorkflow() *Workflow {
 	w.Setup = &SetupService{Workflow: w}
 	w.Search = &SearchService{Workflow: w}
 	w.Today = &TodayService{Workflow: w}
+	w.PostRegexp = &PostRegexpService{Workflow: w}
 	return w
 }
