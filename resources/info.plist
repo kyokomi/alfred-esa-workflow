@@ -385,7 +385,7 @@
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>./alfred-esa-workflow regexp "kyokomi" "日報" "# 悪かったこと([\s\S]*)# 所感" "## "</string>
+				<string>./alfred-esa-workflow regexp "{query}" "日報" "# 悪かったこと([\s\S]*)# 所感" "## "</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -404,15 +404,15 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>keyword</key>
 				<string>esa regexp</string>
 				<key>subtext</key>
-				<string>esa regexp</string>
+				<string>esa regexp &lt;username&gt;</string>
 				<key>text</key>
 				<string>esa regexp</string>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
@@ -424,6 +424,17 @@
 	</array>
 	<key>readme</key>
 	<string># 変更履歴
+
+## v0.0.5
+
+### esa regexpコマンドを実装
+- esaのpost（記事）を検索keywordで検索し、正規表現で抽出した文字列をまとめてクリップボードにコピーしてくれる
+    - 用途例として、直近20件の日報の `悪かったこと` に書いた内容をまとめて振り返りたい等
+- ※注意※ページネーション対応してないので20件までしかとれません... :pray:
+- `&lt;username&gt; &lt;検索keyword&gt; &lt;正規表現&gt; &lt;抽出した文字列のprefix (Optional)&gt; `:
+    - 直近20件の自分の日報の悪かったことを抽出する（例: `esa regexp "kyokomi" "日報" "# 悪かったこと([\s\S]*)# 所感" "## "` ）
+    - 悪かったことの次のセクションが所感なので↑の例になっている
+
 
 ## v0.0.4
 
