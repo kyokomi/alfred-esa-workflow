@@ -15,9 +15,12 @@ import (
 // PostRegexpService posts hoge service
 type PostRegexpService struct {
 	*Workflow
+}
 
+type params struct {
 	printPrefix string
 	regexp      *regexp.Regexp
+	query       url.Values
 }
 
 // Command cli command
@@ -33,47 +36,55 @@ func (s *PostRegexpService) Command(c *cli.Context) {
 	}
 }
 
-func (s *PostRegexpService) run(args []string) error {
-	query := url.Values{}
-	if len(args) < 1 {
-		return createArgsError(args)
+func (PostRegexpService) parseParams(args []string) (params, error) {
+	if len(args) < 3 {
+		return params{}, createArgsError(args)
 	}
-	username := args[0]
-	query.Add("user", username)
+	q := url.Values{}
+	q.Add("user", args[0])
 	today := time.Date(2017, time.July, 1, 0, 0, 0, 0, time.Local).Format("2006-01-02")
-	query.Add("created", fmt.Sprintf(">=%s", today))
-	query.Add("keyword", "日報")
-	if len(args) > 1 {
-		query.Set("keyword", args[1])
+	q.Add("created", fmt.Sprintf(">=%s", today))
+	q.Add("keyword", args[1])
+
+	result := params{
+		query:  q,
+		regexp: regexp.MustCompile(args[2]),
 	}
 
-	s.printPrefix = "## "
-	if len(args) > 2 {
-		s.printPrefix = args[2]
-	}
-	s.regexp = regexp.MustCompile(`# 悪かったこと([\s\S]*)# 所感`)
 	if len(args) > 3 {
-		s.regexp = regexp.MustCompile(args[3])
+		result.printPrefix = args[3]
 	}
 
+	return result, nil
+}
+
+func (s *PostRegexpService) run(args []string) error {
+	ps, err := s.parseParams(args)
+	if err != nil {
+		return err
+	}
 	// TODO: ページネーション対応が保留
 	// https://docs.esa.io/posts/102#2-7-0
-	resp, err := s.Client.Post.GetPosts(s.Config.TeamName, query)
+	resp, err := s.Client.Post.GetPosts(s.Config.TeamName, ps.query)
 	if err != nil {
 		return err
 	}
 
 	var printText []string
 	for _, post := range resp.Posts {
-		keywords := s.regexp.FindSubmatch([]byte(post.BodyMd))
+		keywords := ps.regexp.FindSubmatch([]byte(post.BodyMd))
 		if len(keywords) <= 1 {
 			continue
 		}
 
-		printText = append(printText, s.printPrefix+post.FullName)
+		printText = append(printText, ps.printPrefix+post.FullName)
 		printText = append(printText, string(keywords[1]))
 	}
 	fmt.Println(strings.Join(printText, ""))
 
 	return nil
+}
+
+func (PostRegexpService) createArgsError(args []string) error {
+	return fmt.Errorf("args error: <username> <keyword> <regexp> <printPrefix (optional)> != %s", args)
 }
